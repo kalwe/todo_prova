@@ -1,0 +1,96 @@
+/* Main Content */
+body {
+    background-color: #eceff0;
+}
+
+body,
+input {
+    font: 1em "Open Sans", sans-serif;
+    color: #363639;
+}
+
+ul a {
+    text-decoration: none;
+    border-bottom: 1px dashed #363639;
+}
+
+.conteudo {
+    background-color: #fff;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+}
+
+.conteudo .header {
+    font-family: "Shadows Into Light Two", cursive;
+    margin: 0 0 10px 0;
+}
+
+/* Tarefas */
+.tarefas {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.tarefas li,
+.tarefa-adicionar .input {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    padding: 15px 0;
+}
+
+.tarefas .tarefa .completa {
+    text-decoration: line-through;
+}
+
+.input:focus {
+    outline: none;
+}
+
+/* Button Completa */
+.button-completa {
+    display: inline;
+    font-size: .8em;
+    background-color: #d9dfe1;
+    color: #363639;
+    padding: 3px 6px;
+    border: 0;
+    opacity: 0.4;
+}
+
+.tarefas li:hover .button-completa {
+    opacity: 1;
+    color: #fff;
+    background-color: #04F404;
+}
+
+/* Form Adicionar Tarefas */
+.tarefa-adicionar {
+    padding: 30px;
+}
+
+.descricao-area {
+    font: 1em "Open Sans", sans-serif;
+    margin-top: 15px;
+    border: 1px dashed #ccc;
+}
+
+/* Submit button */
+.submit {
+    background-color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 3px 3px 0 #ddd;
+}
+
+.submit:hover {
+    background-color: #04F404;
+    box-shadow: 3px 3px 0 #03DD6D;
+}
