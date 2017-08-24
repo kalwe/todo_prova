@@ -43,17 +43,23 @@
 
             <ul class="tarefas">
                 <li>
-                    <span class="tarefa"><a href="#">Tarefa</a></span>
-                    <a href="#" class="button-completa">Completada</a>
+                    <span class="tarefa"><a href="#tarefa">Tarefa</a></span>
+                    <a href="#completada" class="button-completa">Completada</a>
                 </li>
-                <li><span class="tarefa completa"><a href="#">Tarefa Completa</a></span></li>
+                <li>
+                    <span class="tarefa completa"><a href="#">Tarefa Completa</a></span>
+                </li>
             </ul>
 
             <form class="tarefa-adicionar" action="adicionar_tarefa.php" method="post">
                 <input type="text" name="nome" placeholder="Título" class="input" autocomplete="off"><br />
-                <input type="text" name="categoria", placeholder="Categoria" class="input"><br />
-                <a href="views/cadastro_categoria.html" class="link-categoria">Cadastrar Categoria</a><br />
+
+                <input type="text" name="categoria", placeholder="Categoria" class="input">
+
+                <a href="views/cadastro_categoria.html" class="link-categoria">Adicionar Categoria</a><br />
+
                 <textarea name="descricao" cols="47" rows="10" class="descricao-area" placeholder="Descrição"></textarea><br />
+
                 <input type="submit" value="Adicionar" class="submit">
             </form>
         </div>

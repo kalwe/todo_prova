@@ -64,7 +64,7 @@ ul a {
     opacity: 0.4;
 }
 
-.tarefas li:hover .button-completa {
+.button-completa:hover {
     opacity: 1;
     color: #fff;
     background-color: #04F404;
@@ -82,8 +82,9 @@ ul a {
 }
 
 .link-categoria {
-    /* right: 5px; */
-    /* margin-right: 5px; */
+    display: inline-block;
+    margin: 15px;
+    margin-left: 45px;
 }
 
 /* Submit button */
