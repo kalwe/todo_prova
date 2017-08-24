@@ -52,6 +52,7 @@
             <form class="tarefa-adicionar" action="adicionar_tarefa.php" method="post">
                 <input type="text" name="nome" placeholder="Título" class="input" autocomplete="off"><br />
                 <input type="text" name="categoria", placeholder="Categoria" class="input"><br />
+                <a href="views/cadastro_categoria.html" class="link-categoria">Cadastrar Categoria</a><br />
                 <textarea name="descricao" cols="47" rows="10" class="descricao-area" placeholder="Descrição"></textarea><br />
                 <input type="submit" value="Adicionar" class="submit">
             </form>
