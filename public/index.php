@@ -2,6 +2,7 @@
 
 require_once 'app/init.php';
 
+// obtendo tarefas
 $tarefasQuery = $db->prepare("
     SELECT tarefa_id, categoria_id, titulo, descricao, completa
     FROM tarefa
@@ -14,15 +15,15 @@ $tarefasQuery->execute([
 
 $tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
 
-// categoria 
+// obtendo categorias
 $categoriasQuery = $db->prepare("
-SELECT categoria_id, nome
-FROM categoria
-WHERE usuario_id = :usuario_id
+    SELECT categoria_id, nome
+    FROM categoria
+    WHERE usuario_id = :usuario_id
 ");
 
 $categoriasQuery->execute([
-'usuario_id' => $_SESSION['usuario_id']
+    'usuario_id' => $_SESSION['usuario_id']
 ]);
 
 $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];

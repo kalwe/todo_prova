@@ -1,6 +1,6 @@
 <?php
 
-    include 'DbConnection.php';
+    include($_ENV.'../../src/Data/DbConnection.php');
 
     session_start();
 
