@@ -1,6 +1,8 @@
 <?php
 
-// namespace Data;
+namespace Data;
+
+use PDO;
 
 class DbConnection {
 

@@ -1,12 +1,14 @@
 <?php
 
-    include($_ENV.'../../src/Data/DbConnection.php');
+    include(__DIR__. DIRECTORY_SEPARATOR. '../../src/Data/DbConnection.php');
+
+    use Data\DbConnection as DbConnection;
 
     session_start();
 
     $_SESSION['usuario_id'] = 1;
 
-    $dbCon = new DbConnection();
+    $dbCon = new DbConnection;
 
     $db = $dbCon->getConnection();
 

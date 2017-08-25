@@ -2,10 +2,14 @@
 
 require_once 'app/init.php';
 
+include(__DIR__ . DIRECTORY_SEPARATOR . '../src/Services/categoriaService.php');
+
+
 // obtendo tarefas
 $tarefasQuery = $db->prepare("
-    SELECT tarefa_id, categoria_id, titulo, descricao, completa
+    SELECT tarefa_id, categoria.nome as categoriaNome, titulo, descricao, completa
     FROM tarefa
+    INNER JOIN categoria ON tarefa.categoria_id = categoria.categoria_id
     WHERE usuario_id = :usuario_id
 ");
 
@@ -19,12 +23,9 @@ $tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
 $categoriasQuery = $db->prepare("
     SELECT categoria_id, nome
     FROM categoria
-    WHERE usuario_id = :usuario_id
 ");
 
-$categoriasQuery->execute([
-    'usuario_id' => $_SESSION['usuario_id']
-]);
+$categoriasQuery->execute();
 
 $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
 
@@ -78,7 +79,7 @@ $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
                     <ul class="tarefas">
                         <?php foreach($tarefas as $tarefa): ?>
                             <li>
-                                <span class="tarefa <?php echo $tarefa['completa'] ? ' completa' : '' ?> "><a href="#tarefa"><?php echo $tarefa['titulo']; ?>Tarefa</a></span>
+                                <span class="tarefa <?php echo $tarefa['completa'] ? ' completa' : '' ?> "><a href="#tarefa"><?php echo $tarefa['titulo']; ?><br><?php echo $tarefa['categoriaNome']; ?></a></span>
                                 <?php if(!$tarefa['completa']): ?>
                                     <a href="#completada" class="button-completa">Marcar como Completada</a>
                                 <?php endif; ?>
@@ -97,7 +98,6 @@ $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
                 <form action="adicionar_tarefa.php" method="post">
                     <input type="text" name="nome" placeholder="Título" class="input" autocomplete="off"><br />
 
-                    <!-- <input type="text" name="categoria", placeholder="Categoria" class="input"> -->
                     <select name="categorias" class="input select-categorias">
                         <option value="0" > -- Selecione uma Categoria -- </option>
                         <?php
@@ -107,7 +107,7 @@ $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
                         ?>
                     </select>
 
-                    <!-- <a href="views/cadastro_categoria.html" class="link-categoria"><span class="text-decoration">Adicionar Categoria</span></a><br /> -->
+                     <a href="views/cadastro_categoria.html" class="link-categoria"><span class="text-decoration">Adicionar Categoria</span></a><br /> 
 
                     <textarea name="descricao" cols="47" rows="10" class="descricao-area" placeholder="Descrição"></textarea><br />
 
