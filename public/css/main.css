@@ -38,14 +38,14 @@ ul a {
 }
 
 .tarefas li,
-.tarefa-adicionar .input,
+.cadastro-tarefa .input,
 .cadastro-categoria .input {
     border: 0;
     border-bottom: 1px dashed #ccc;
     padding: 15px 0;
 }
 
-.tarefas .tarefa .completa {
+.tarefas .tarefa.completa {
     text-decoration: line-through;
 }
 
@@ -75,6 +75,11 @@ ul a {
     padding: 30px;
 }
 
+.header-cadastro-tarefa {
+    font-family: "Shadows Into Light Two", cursive;
+    margin: 25px;
+}
+
 .descricao-area {
     font: 1em "Open Sans", sans-serif;
     margin-top: 15px;
@@ -85,6 +90,11 @@ ul a {
     display: inline-block;
     margin: 15px;
     margin-left: 45px;
+}
+
+.text-decoration {
+    font: 1em "Open Sans", sans-serif;
+    color: #363639;
 }
 
 /* Submit button */
