@@ -105,7 +105,7 @@ $tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
                         ?>
                     </select>
 
-                     <a href="views/cadastro_categoria.php" class="link-categoria"><span class="text-decoration">Cadastrar Categoria</span></a><br /> 
+                     <a href="views/cadastroCategoria.php" class="link-categoria"><span class="text-decoration">Cadastrar Categoria</span></a><br /> 
 
                     <textarea name="descricao" cols="47" rows="10" class="descricao-area" placeholder="Descrição"></textarea><br />
 

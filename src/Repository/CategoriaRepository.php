@@ -4,10 +4,10 @@ namespace Repository;
 
 // require_once '../init.php';
 // include_once(__DIR__. DIRECTORY_SEPARATOR. '..\Data\DbConnection.php');
-include_once(__DIR__. DIRECTORY_SEPARATOR. '..\Model\Categoria.php');
+require_once(__DIR__. DIRECTORY_SEPARATOR. '..\Model\Categoria.php');
 // include(__DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iCategoriaRepository.php');
 
-// use Model\Categoria as Categoria;
+use Model\Categoria as Categoria;
 // use Data\DbConnection as DbConnection;
 // use Interfaces\Repositories as iCategoriaRepository;
 
@@ -16,32 +16,30 @@ include_once(__DIR__. DIRECTORY_SEPARATOR. '..\Model\Categoria.php');
 
 class CategoriaRepository
 {
-    // private $dbConn = DbConnection;
-    private $dbC;
+    private $db;
 
     public function __construct($db) {
-        $this->dbC = $db;
+        $this->db = $db;
     }
 
     // public $categoria;
 
     // insere um obj no database
-    public function create($categoria) {
-        // $dbC = $dbConn->getConnection();
-        $categoriaAdd = $this->dbC->prepare("
+    public function create(Categoria $categoria) {
+
+        $categoriaAdd = $this->db->prepare("
             INSERT INTO categoria (nome)
             VALUES (:nome)
         ");
 
         $categoriaAdd->execute([
-            'nome' => $categoria
+            'nome' => $categoria->nome
         ]);
     }
 
     // lista todas as categorias do database
     public function listAll() {
-        // $dbC = $dbConn->getConnection();
-        $categoriasList = $this->dbC->prepare("
+        $categoriasList = $this->db->prepare("
             SELECT categoria_id, nome
             FROM categoria
         ");

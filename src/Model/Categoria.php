@@ -1,30 +1,27 @@
 <?php
 
-// namespace Model;
+namespace Model;
 
 class Categoria {
 
     private $categoriaId;
     private $nome; 
 
-    public function __construct($nome){
-        $this->nome = $nome;
+    public function __construct(){
     }
 
     // gets
-    
-    public function getCategoriaId() {
-        return $categoriaId;
-    }
 
-    public function getNome($nome) {
-        return $nome;
+    public function __get($property) {
+        return $this->$property;
     }
 
     // sets
 
-    public function setNome($nome) {
-        $this->nome = $nome;
+    public function __set($property, $value) {
+        if((property_exists($this, $property))) {
+            $this->$property = $value;
+        }
     }
 }
 

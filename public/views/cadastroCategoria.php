@@ -1,21 +1,6 @@
 <?php
 
-require_once '../app/init.php';
-include(__DIR__. DIRECTORY_SEPARATOR. '../../src/Services/categoriaService.php');
-
-use Services\CategoriaService as CategoriaService;
-
-$categoriaService = new CategoriaService($db);
-$categorias = $categoriaService->listCategorias();
-
-// foreach ($categorias as $categoria ) {
-//     echo $categoria['nome'];
-// }
-
-// grava no database quando o usuario submeter o formulario
-if (isset($_POST['submit'])) {
-    $categoriaService->add();
-}
+require_once '../../src/Controller/categoriaController.php';
 
 ?>
 

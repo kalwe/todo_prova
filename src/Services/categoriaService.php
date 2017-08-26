@@ -3,27 +3,23 @@
 namespace Services;
 
 include(__DIR__. DIRECTORY_SEPARATOR.'../Repository/CategoriaRepository.php');
-// include(__DIR__. DIRECTORY_SEPARATOR.'../Model/Categoria.php');
+require_once(__DIR__. DIRECTORY_SEPARATOR.'../Model/Categoria.php');
 
 use Repository\CategoriaRepository as CategoriaRepository;
-// use Model\Categoria as Categoria;
+use Model\Categoria as Categoria;
 
 class CategoriaService {
 
     public $categoriaRepository;
-    public $categoria ;
+    // public $categoria = Categoria;
 
     public function __construct($db) {
         $this->categoriaRepository = new CategoriaRepository($db);
     }
 
-    public function add() {
-        if (isset($_POST['nome'])) {
-            $nome = trim($_POST['nome']); // 
-            $this->categoriaRepository->create($nome); // chama o metodo 'create' do repositorio
-        }
-
-        header('Location: cadastro_categoria.php'); // redirecina para index page
+    public function addCategoria(Categoria $categoria) {
+        $this->categoriaRepository->create($categoria);
+        header('Location: cadastroCategoria.php'); // redirecina para index page
     }
 
     public function listCategorias() {
