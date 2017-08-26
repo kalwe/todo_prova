@@ -4,7 +4,7 @@
 }
 
 .btnDeletar {
-    display: inline;
+    float: right;
     font-size: .8em;
     background-color: #EC644B; /* SOFT-RED */
     color: #363639;

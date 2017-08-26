@@ -1,4 +1,14 @@
 /* Main Content */
+:root {
+    --orange-california: #F89406;
+
+    --grey-pumidice: #D2D7D3;
+    --grey-lynch-shadow: #262B32;
+
+    --green-shamrock: #2ECC71;
+    --green-jade: #00B16A;
+}
+
 body {
     background-color: #eceff0;
 }
@@ -31,7 +41,7 @@ ul a {
 }
 
 .text-california {
-    color: #F89406;
+    color: var(--orange-california);
 }
 
 /* Tarefas */
@@ -61,8 +71,8 @@ ul a {
 .button-completa {
     display: inline;
     font-size: .8em;
-    background-color: #d9dfe1;
-    color: #363639;
+    background-color: var(--grey-pumidice); 
+    color: var(--grey-lynch-shadow);
     padding: 3px 6px;
     border: 0;
     opacity: 0.4;
@@ -71,7 +81,7 @@ ul a {
 .button-completa:hover {
     opacity: 1;
     color: #fff;
-    background-color: #04F404;
+    background-color: var(--green-shamrock); 
 }
 
 /* Form Adicionar Tarefas */
@@ -112,6 +122,6 @@ ul a {
 }
 
 .submit:hover {
-    background-color: #04F404;
-    box-shadow: 3px 3px 0 #03DD6D;
+    background-color: var(--green-shamrock);
+    box-shadow: 3px 3px 0 var(--green-jade);
 }
