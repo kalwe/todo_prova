@@ -25,66 +25,15 @@ class Tarefa {
 
     // gets
 
-    public function getTarefaId() {
-        return $this->tarefaId;
-    }
-
-    public functin getUsuarioId() {
-        return $usuarioId;
-    }
-
-    public functin getCategoriaId() {
-        return $categoriaId;
-    }
-
-    public function getTitulo() {
-        return $titulo;
-    }
-
-    public functin getDataInicio() {
-        return $dataInicio;
-    }
-
-    public functin getDataFim() {
-        return $dataFim;
-    }
-
-    public function getDescricao() {
-        return $descricao;
-    }
-
-    public function getCompleta() {
-        return $completa;
+    public function __get($property) {
+        return $this->$property;
     }
 
     // sets
 
-    public functin setUsuarioId($usuarioId) {
-        $this->usuarioId = $usuarioId;
-    }
-
-    public functin setCategoriaId($categoriaId) {
-        $this->categoriaId = $categoriaId;
-    }
-
-    public function setTitulo($titulo) {
-        $this->titulo = $titulo;
-    }
-
-    public functin setDataInicio($dataInicio) {
-        $this->dataInicio = $dataInicio;
-    }
-
-    public functin setDataFim($dataFim) {
-        $this->dataFim = $dataFim;
-    }
-
-    public function setDescricao($descricao) {
-        $this->descricao = $descricao;
-    }
-
-    public function setCompleta($completa) {
-        $this->completa = $completa;
+    public function __set($property, $value) {
+        if ((property_exists($this, $property)))
+            $this->$property = $value;
     }
 
 }
