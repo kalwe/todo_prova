@@ -1,25 +1,8 @@
 <?php
 
-require_once 'app/init.php';
-include(__DIR__. DIRECTORY_SEPARATOR. '../src/Services/categoriaService.php');
-
-use Services\CategoriaService as CategoriaService;
-
-$categoriaService = new CategoriaService($db);
-
-// obtendo tarefas
-$tarefasQuery = $db->prepare("
-    SELECT tarefa_id, categoria.nome as categoriaNome, titulo, descricao, completa
-    FROM tarefa
-    INNER JOIN categoria ON tarefa.categoria_id = categoria.categoria_id
-    WHERE usuario_id = :usuario_id
-");
-
-$tarefasQuery->execute([
-    'usuario_id' => $_SESSION['usuario_id']
-]);
-
-$tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
+// require_once 'app/init.php';
+require_once '../src/Controller/tarefaController.php';
+require_once '../src/Controller/categoriaController.php';
 
 ?>
 
@@ -91,7 +74,7 @@ $tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
                         ?>
                     </select>
 
-                     <a href="views/cadastroCategoria.php" class="link-categoria"><span class="text-decoration">Cadastrar Categoria</span></a><br /> 
+                     <a href="views/cadastroCategoria.php" class="link-categoria"><span class="text-decoration">Cadastrar Categoria</span></a><br />
 
                     <textarea name="descricao" cols="47" rows="10" class="descricao-area" placeholder="Descrição"></textarea><br />
 

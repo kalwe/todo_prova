@@ -14,7 +14,7 @@ $categoriaService = new CategoriaService($db);
 $categorias = $categoriaService->listCategorias(); // lista as categorias para preencher a lista
 
 // grava no database quando o usuario submeter o formulario
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit-categoria'])) {
     if (isset($_POST['nome'])) {
         $categoria->nome = trim($_POST['nome']);
         // echo $categoria->nome;

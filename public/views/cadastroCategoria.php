@@ -33,7 +33,7 @@ require_once '../../src/Controller/categoriaController.php';
         <h2 class="header-cadastro-form">Cadastro de Categoria</h2>
         <form class="cadastro-categoria" method="post">
             <input type="text" name="nome" class="input" maxlength="40" placeholder="Categoria"><br />
-            <input type="submit" name="submit" value="Adicionar" class="submit">
+            <input type="submit" name="submit-categoria" value="Adicionar" class="submit">
         </form>
     </div>
 

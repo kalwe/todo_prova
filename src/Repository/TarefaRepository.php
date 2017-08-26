@@ -2,7 +2,7 @@
 
 namespace Repository;
 
-require __DIR__. DIRECTORY_SEPARATOR. '../Data/DbConnection.php';
+require_once __DIR__. DIRECTORY_SEPARATOR. '../Data/DbConnection.php';
 require_once __DIR__. DIRECTORY_SEPARATOR. '..\Model\Tarefa.php';
 require_once __DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iTarefaRepository.php';
 
@@ -10,12 +10,12 @@ use Data\DbConnection as DbConnection;
 use Model\Tarefa as Tarefa;
 use Interfaces\Repositories\iTarefaRepository as iTarefaRepository;
 
-class TarefaRepository implements iTarefaRepository
-{
+class TarefaRepository implements iTarefaRepository {
+
     private $_db;
 
-    public function __construct(DbConnection $db) {
-        $this->_db = $db
+    public function __construct($db) {
+        $this->_db = $db;
     }
 
     // insere uma tarefa no db
@@ -37,7 +37,7 @@ class TarefaRepository implements iTarefaRepository
     }
 
     // recupera uma tarefa por id da tarefa e usuario
-    public function find($usuario_id, $tarefa_id) {
+    public function find($usuarioId, $tarefaId) {
         $tarefaFind = $this->_db->prepare("
             SELECT usuario_id, tarefa_id, categoria.nome, titulo, dataInicio, dataFim, descricao, completa
             FROM tarefa
@@ -46,8 +46,8 @@ class TarefaRepository implements iTarefaRepository
         ");
 
         $tarefaFind->execute([
-            'usuario_id' => $usuario_id,
-            'tarefa_id' => $tarefa_id
+            'usuario_id' => $usuarioId,
+            'tarefa_id' => $tarefaId
         ]);
 
         $tarefa = $tarefaFind->fetch();
@@ -62,7 +62,7 @@ class TarefaRepository implements iTarefaRepository
         ");
         $tarefaList->execute();
         $tarefas = $tarefaList->rowCount() ? $tarefaList : [];
-        return tarefas;
+        return $tarefas;
     }
 
     // atualiza uma tarefa no db

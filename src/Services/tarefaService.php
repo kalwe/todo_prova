@@ -6,9 +6,9 @@ include __DIR__. DIRECTORY_SEPARATOR. '../Repository/TarefaRepository.php';
 require_once __DIR__. DIRECTORY_SEPARATOR. '../Interfaces/Services/iTarefaService.php';
 require_once __DIR__. DIRECTORY_SEPARATOR. '../Model/Tarefa.php';
 
-use Repositoroy\TarefaRepository as TarefaRepository;
-use Repository\Services\iTarefaService as iTarefaService;
-use Model\Tarafa as Tarefa;
+use Repository\TarefaRepository as TarefaRepository;
+use Interfaces\Services\iTarefaService as iTarefaService;
+use Model\Tarefa as Tarefa;
 
 class TarefaService implements iTarefaService {
 
@@ -23,7 +23,7 @@ class TarefaService implements iTarefaService {
     }
 
     public function listarTarefas() {
-        return $this->tarefaRepository->list();
+        return $this->tarefaRepository->listAll();
     }
 
     public function marcarComoCompletada(Tarefa $tarefa) {
