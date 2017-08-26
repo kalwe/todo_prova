@@ -13,4 +13,19 @@ $tarefa = new Tarefa();
 
 $tarefas = $tarefaService->listarTarefas();
 
+// adiciona tarefa no db
+if (isset($_POST['submit-tarefa'])) {
+    if (isset($_POST['titulo']) ) {
+        $tarefa->usuarioId = $_SESSION['usuario_id'];
+        $tarefa->categoriaId = $_POST['categorias'];
+        $tarefa->titulo = trim($_POST['titulo']);
+        $tarefa->dataInicio = $_POST['dataInicio'];
+        $tarefa->datafim = $_POST['dataFim'];
+        $tarefa->descricao = $_POST['descricao'];
+        $tarefa->completa = 0;
+    }
+    $tarefaService->addTarefa($tarefa);
+    header('Location: index.php');
+}
+
 ?>

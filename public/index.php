@@ -58,10 +58,10 @@ require_once '../src/Controller/categoriaController.php';
             <div class="cadastro-form">
                 <h2 class="header-cadastro-form">Cadastro de Tarefa</h2>
 
-                <form action="adicionar_tarefa.php" method="post">
-                    <input type="text" name="nome" class="input" autocomplete="off" maxlength="40" placeholder="Título"><br />
+                <form method="post">
+                    <input type="text" name="titulo" class="input" autocomplete="off" maxlength="40" placeholder="Título"><br />
 
-                    <input type='text' name="dataInicio" class="input" placeholder="Data de Início" maxlength="11"  onkeypress=""><br />
+                    <input type='text' name="dataInicio" class="input" placeholder="Data de Início" maxlength="11" onkeypress=""><br />
 
                     <input type="text" name="dataFim" class="input" placeholder="Data Fim" maxlength="11" onkeypress=""><br />
 
@@ -78,7 +78,7 @@ require_once '../src/Controller/categoriaController.php';
 
                     <textarea name="descricao" cols="47" rows="10" class="descricao-area" placeholder="Descrição"></textarea><br />
 
-                    <input type="submit" value="Adicionar" class="submit">
+                    <input type="submit" name="submit-tarefa" value="Adicionar" class="submit">
                 </form>
             </div>
         </div>

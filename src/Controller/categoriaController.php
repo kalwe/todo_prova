@@ -17,7 +17,6 @@ $categorias = $categoriaService->listCategorias(); // lista as categorias para p
 if (isset($_POST['submit-categoria'])) {
     if (isset($_POST['nome'])) {
         $categoria->nome = trim($_POST['nome']);
-        // echo $categoria->nome;
     }
     $categoriaService->addCategoria($categoria);
     header('Location: cadastroCategoria.php'); // redireciona para index page

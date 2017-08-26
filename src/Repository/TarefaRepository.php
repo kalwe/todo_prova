@@ -12,22 +12,22 @@ use Interfaces\Repositories\iTarefaRepository as iTarefaRepository;
 
 class TarefaRepository implements iTarefaRepository {
 
-    private $_db;
+    private $db;
 
     public function __construct($db) {
-        $this->_db = $db;
+        $this->db = $db;
     }
 
     // insere uma tarefa no db
     public function create(Tarefa $tarefa) {
-        $tarefaInsert = $this->_db->prepare("
+        $tarefaInsert = $this->db->prepare("
             INSERT INTO tarefa (categoria_id, usuario_id, titulo, descricao, completa, dataInicio, dataFim)
-            VALUES (:categoria_id, :usuario_id, :titulo, :descricao, :completa, :dataInicio, :dataFim);
+            VALUES (:categoria_id, :usuario_id, :titulo, :descricao, :completa, :dataInicio, :dataFim)
         ");
 
         $tarefaInsert->execute([
-            'categoria_id' => $tarefa->categoria_id,
-            'usuario_id'   => $tarefa->usuario_id,
+            'categoria_id' => $tarefa->categoriaId,
+            'usuario_id'   => $tarefa->usuarioId,
             'titulo'       => $tarefa->titulo,
             'descricao'    => $tarefa->descricao,
             'completa'     => $tarefa->completa,
@@ -38,7 +38,7 @@ class TarefaRepository implements iTarefaRepository {
 
     // recupera uma tarefa por id da tarefa e usuario
     public function find($usuarioId, $tarefaId) {
-        $tarefaFind = $this->_db->prepare("
+        $tarefaFind = $this->db->prepare("
             SELECT usuario_id, tarefa_id, categoria.nome, titulo, dataInicio, dataFim, descricao, completa
             FROM tarefa
             INNER JOIN categoria ON tarefa.categoria_id = categoria.categoria_id
@@ -56,7 +56,7 @@ class TarefaRepository implements iTarefaRepository {
 
     // retorna uma lista com todas as tarefas do db
     public function listAll() {
-        $tarefaList = $this->_db->prepare("
+        $tarefaList = $this->db->prepare("
             SELECT tarefa_id, categoria_id, usuario_id, titulo, descricao, completa, dataInicio, dataFim
             FROM tarefa
         ");
@@ -67,7 +67,7 @@ class TarefaRepository implements iTarefaRepository {
 
     // atualiza uma tarefa no db
     public function update(Tarefa $tarefa) {
-        $tarefaUpdate = $this->_db->prepare("
+        $tarefaUpdate = $this->db->prepare("
             UPDATE tarefa SET usuario_id = :usuario_id, categoria_id = :categoria_id, titulo = :titulo, descricao = :descricao, completa = :completa, dataInicio = :dataInicio, dataFim = :dataFim 
             WHERE :tarefa_id
         ");
@@ -86,7 +86,7 @@ class TarefaRepository implements iTarefaRepository {
 
     // atualiza o status da tarefa de acordo com o status passado TODO: trocar params apenas tarefa_id e status completa
     public function atualizaCompleta(Tarefa $tarefa) {
-        $tarefaCompleta = $this->_db->prepare("
+        $tarefaCompleta = $this->db->prepare("
             UPDATE tarefa SET completa = :completa
             WHERE tarefa_id = :tarefa_id
         ");
