@@ -1,3 +1,5 @@
+
+
 /* Main Content */
 body {
     background-color: #eceff0;
@@ -30,22 +32,26 @@ ul a {
     margin: 0 0 10px 0;
 }
 
+.text-california {
+    color: #F89406;
+}
+
 /* Tarefas */
-.tarefas {
+.lista-items {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-.tarefas li,
-.cadastro-tarefa .input,
+.lista-items li,
+.cadastro-form .input,
 .cadastro-categoria .input {
     border: 0;
     border-bottom: 1px dashed #ccc;
     padding: 15px 0;
 }
 
-.tarefas .tarefa.completa {
+.lista-items .item.completa {
     text-decoration: line-through;
 }
 
@@ -75,7 +81,7 @@ ul a {
     padding: 30px;
 }
 
-.header-cadastro-tarefa {
+.header-cadastro-form {
     font-family: "Shadows Into Light Two", cursive;
     margin: 25px;
 }

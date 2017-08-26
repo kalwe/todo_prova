@@ -1,6 +1,6 @@
 <?php
 
-    include(__DIR__. DIRECTORY_SEPARATOR. '../../src/Data/DbConnection.php');
+    include_once(__DIR__. DIRECTORY_SEPARATOR. '../../src/Data/DbConnection.php');
 
     use Data\DbConnection as DbConnection;
 

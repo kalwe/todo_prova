@@ -1,9 +1,11 @@
 <?php
 
 require_once 'app/init.php';
+include(__DIR__. DIRECTORY_SEPARATOR. '../src/Services/categoriaService.php');
 
-include(__DIR__ . DIRECTORY_SEPARATOR . '../src/Services/categoriaService.php');
+use Services\CategoriaService as CategoriaService;
 
+$categoriaService = new CategoriaService($db);
 
 // obtendo tarefas
 $tarefasQuery = $db->prepare("
@@ -18,16 +20,6 @@ $tarefasQuery->execute([
 ]);
 
 $tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
-
-// obtendo categorias
-$categoriasQuery = $db->prepare("
-    SELECT categoria_id, nome
-    FROM categoria
-");
-
-$categoriasQuery->execute();
-
-$categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
 
 ?>
 
@@ -44,6 +36,7 @@ $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two">
 
     <link rel="stylesheet" href="css/main.css">
+
     <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/tether/dist/css/tether.min.css">
 
@@ -53,7 +46,6 @@ $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
 
 </head>
 <body>
-
         <!-- nav header -->
         <!-- <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
             <a class="navbar-brand" href="#">Gerenciador de Tarefas</a>
@@ -76,10 +68,12 @@ $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
 
             <div class="lista-tarefas">
                 <?php if(!empty($tarefas)): ?>
-                    <ul class="tarefas">
+                    <ul class="lista-items">
                         <?php foreach($tarefas as $tarefa): ?>
                             <li>
-                                <span class="tarefa <?php echo $tarefa['completa'] ? ' completa' : '' ?> "><a href="#tarefa"><?php echo $tarefa['titulo']; ?><br><?php echo $tarefa['categoriaNome']; ?></a></span>
+                                <span class="item <?php echo $tarefa['completa'] ? ' completa' : '' ?> ">
+                                    <a href="#tarefa"><?php echo $tarefa['titulo']; ?></a>
+                                </span>
                                 <?php if(!$tarefa['completa']): ?>
                                     <a href="#completada" class="button-completa">Marcar como Completada</a>
                                 <?php endif; ?>
@@ -87,27 +81,31 @@ $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
                         <?php endforeach; ?>
                     </ul>
                 <?php else: ?>
-                    <p>Nenhuma tarefa cadastrada.</p>
-                    <p>Use o formulário abaxio para cadastrar uma terefa!</p>
+                    <p class="text-california">Nenhuma tarefa cadastrada.</p>
+                    <p class="text-california">Use o formulário abaxio para cadastrar uma terefa!</p>
                 <?php endif; ?>
             </div>
 
-            <div class="cadastro-tarefa">
-                <h2 class="header-cadastro-tarefa">Cadastro de Tarefa</h2>
+            <div class="cadastro-form">
+                <h2 class="header-cadastro-form">Cadastro de Tarefa</h2>
 
                 <form action="adicionar_tarefa.php" method="post">
-                    <input type="text" name="nome" placeholder="Título" class="input" autocomplete="off"><br />
+                    <input type="text" name="nome" class="input" autocomplete="off" maxlength="40" placeholder="Título"><br />
+
+                    <input type='text' name="dataInicio" class="input" placeholder="Data de Início" maxlength="11"  onkeypress=""><br />
+
+                    <input type="text" name="dataFim" class="input" placeholder="Data Fim" maxlength="11" onkeypress=""><br />
 
                     <select name="categorias" class="input select-categorias">
                         <option value="0" > -- Selecione uma Categoria -- </option>
                         <?php
-                            foreach ($categorias as $categoria) {
+                            foreach ($categoriaService->listCategorias() as $categoria) {
                                 echo '<option value="'.$categoria['categoria_id'].'">'.$categoria['nome'].'</option>';
                             };
                         ?>
                     </select>
 
-                     <a href="views/cadastro_categoria.html" class="link-categoria"><span class="text-decoration">Adicionar Categoria</span></a><br /> 
+                     <a href="views/cadastro_categoria.php" class="link-categoria"><span class="text-decoration">Cadastrar Categoria</span></a><br /> 
 
                     <textarea name="descricao" cols="47" rows="10" class="descricao-area" placeholder="Descrição"></textarea><br />
 

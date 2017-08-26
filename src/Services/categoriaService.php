@@ -1,22 +1,35 @@
 <?php
 
-include('..\Repository\CategoriaRepository.php');
-include('..\Model\Categoria.php');
+namespace Services;
+
+include(__DIR__. DIRECTORY_SEPARATOR.'../Repository/CategoriaRepository.php');
+// include(__DIR__. DIRECTORY_SEPARATOR.'../Model/Categoria.php');
 
 use Repository\CategoriaRepository as CategoriaRepository;
-use Model\Categoria as Categoria;
+// use Model\Categoria as Categoria;
 
-$categoriaRepository = new CategoriaRepository;
-$categoria = new Categoria;
+class CategoriaService {
 
+    public $categoriaRepository;
+    public $categoria ;
 
-public function add() {
-    if (isset($_POST['nome'])) {
-        $categoria->nome = trim($_POST['nome']); // 
-        $categoriaRepository->create($categoria); // chama o metodo 'create' do repositorio
+    public function __construct($db) {
+        $this->categoriaRepository = new CategoriaRepository($db);
     }
-}
 
-header('Location: index.php'); // redirecina para index page
+    public function add() {
+        if (isset($_POST['nome'])) {
+            $nome = trim($_POST['nome']); // 
+            $this->categoriaRepository->create($nome); // chama o metodo 'create' do repositorio
+        }
+
+        header('Location: cadastro_categoria.php'); // redirecina para index page
+    }
+
+    public function listCategorias() {
+        return $this->categoriaRepository->listAll();
+    }
+
+}
 
 ?>

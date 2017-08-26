@@ -1,45 +1,55 @@
 <?php
 
-// require_once '../init.php';
-include('..\Data\DbConnection.php');
-include('..\Model\Categoria.php');
-
-use Model\Categoria as Categoria;
-
 namespace Repository;
 
-class CategoriaRepository implements iTarefaRepository
-{
-    $dbCon = new DbConnection();
-    $db = $dbCon->getConnection();
+// require_once '../init.php';
+// include_once(__DIR__. DIRECTORY_SEPARATOR. '..\Data\DbConnection.php');
+include_once(__DIR__. DIRECTORY_SEPARATOR. '..\Model\Categoria.php');
+// include(__DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iCategoriaRepository.php');
 
-    $categoria = new Categoria;
+// use Model\Categoria as Categoria;
+// use Data\DbConnection as DbConnection;
+// use Interfaces\Repositories as iCategoriaRepository;
+
+// $dbCon = new DbConnection;
+// $db = $dbCon->getConnection();
+
+class CategoriaRepository
+{
+    // private $dbConn = DbConnection;
+    private $dbC;
+
+    public function __construct($db) {
+        $this->dbC = $db;
+    }
+
+    // public $categoria;
 
     // insere um obj no database
-    public function create(Categoria $categoria) {
-        $db->prepare("
+    public function create($categoria) {
+        // $dbC = $dbConn->getConnection();
+        $categoriaAdd = $this->dbC->prepare("
             INSERT INTO categoria (nome)
             VALUES (:nome)
         ");
 
-        $db->execute([
-            'nome' => $categoria['nome']
+        $categoriaAdd->execute([
+            'nome' => $categoria
         ]);
     }
 
     // lista todas as categorias do database
-    public function list() {
-        $categoriasQuery = $db->prepare("
+    public function listAll() {
+        // $dbC = $dbConn->getConnection();
+        $categoriasList = $this->dbC->prepare("
             SELECT categoria_id, nome
             FROM categoria
         ");
 
-        $categoriasQuery->execute();
-        $categorias = $categoriasQuery->rowCount() ? $categoriasQuery : [];
+        $categoriasList->execute();
+        $categorias = $categoriasList->rowCount() ? $categoriasList : [];
 
         return $categorias;
     }
-
 }
-
 ?>

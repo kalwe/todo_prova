@@ -6,10 +6,10 @@ use PDO;
 
 class DbConnection {
 
-    protected $db_host = 'localhost';
-    protected $db_user = 'root';
-    protected $db_passwd = '';
-    protected $db_name = 'tarefas_db';
+    private $db_host = 'localhost';
+    private $db_user = 'root';
+    private $db_passwd = '';
+    private $db_name = 'tarefas_db';
 
     // return new connection 
     public function getConnection() {
