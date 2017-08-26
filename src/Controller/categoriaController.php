@@ -7,11 +7,11 @@ require_once(__DIR__. DIRECTORY_SEPARATOR. '../Model/Categoria.php');
 use Model\Categoria as Categoria;
 use Services\CategoriaService as CategoriaService;
 
+$categoria = new Categoria();
+
 $categoriaService = new CategoriaService($db);
 
 $categorias = $categoriaService->listCategorias(); // lista as categorias para preencher a lista
-
-$categoria = new Categoria();
 
 // grava no database quando o usuario submeter o formulario
 if (isset($_POST['submit'])) {
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         // echo $categoria->nome;
     }
     $categoriaService->addCategoria($categoria);
-    header('Location: cadastroCategoria.php'); // redirecina para index page
+    header('Location: cadastroCategoria.php'); // redireciona para index page
 }
 
 // deleta categoria por id

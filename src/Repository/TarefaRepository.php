@@ -55,7 +55,7 @@ class TarefaRepository implements iTarefaRepository
     }
 
     // retorna uma lista com todas as tarefas do db
-    public function list() {
+    public function listAll() {
         $tarefaList = $this->_db->prepare("
             SELECT tarefa_id, categoria_id, usuario_id, titulo, descricao, completa, dataInicio, dataFim
             FROM tarefa
