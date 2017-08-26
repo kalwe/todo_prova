@@ -19,6 +19,7 @@ class CategoriaRepository implements iCategoriaRepository
     // insere um obj no database
     public function create(Categoria $categoria) {
 
+        
         $categoriaAdd = $this->db->prepare("
             INSERT INTO categoria (nome)
             VALUES (:nome)
@@ -43,12 +44,15 @@ class CategoriaRepository implements iCategoriaRepository
     }
 
     // deleta uma cateogria
-    public function deletar($categoriaId) {
+    public function delete($categoriaId) {
         $categoriaDelete = $this->db->prepare("
-            DELETE 
+            DELETE FROM categoria
+            WHERE categoria_id = :categoriaId
         ");
 
-        $categoriaDelete->execute();
+        $categoriaDelete->execute([
+            'categoriaId' => $categoriaId
+        ]);
     }
 }
 ?>

@@ -27,6 +27,10 @@ class CategoriaService implements iCategoriaService {
         return $this->categoriaRepository->listAll();
     }
 
+    public function deletarCategoria($categoriaId) {
+        $this->categoriaRepository->delete($categoriaId);
+    }
+
 }
 
 ?>

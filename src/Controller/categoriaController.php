@@ -23,4 +23,11 @@ if (isset($_POST['submit'])) {
     header('Location: cadastroCategoria.php'); // redirecina para index page
 }
 
+// deleta categoria por id
+if (isset($_GET['categoriaId'])) {
+    $categoriaId = $_GET['categoriaId'];
+    $categoriaService->deletarCategoria($categoriaId);
+    header('Location: cadastroCategoria.php'); // redirecina para index page
+}
+
 ?>
