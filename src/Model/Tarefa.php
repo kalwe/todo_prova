@@ -1,6 +1,6 @@
 <?php
 
-// namespace Model;
+namespace Model;
 
 class Tarefa {
 
@@ -13,7 +13,7 @@ class Tarefa {
     private $descricao;
     private $completa;
 
-    public function __constructor($usuarioId, $categoriaId, $dataInicio, $dataFim, $titulo, $descricao, $completa) {
+    public function __constructor($usuarioId, $categoriaId, $dataInicio, $dataFim, $titulo, $descricao, $completa){
         $this->categoriaId = $categoriaId;
         $this->usuarioId = $usuarioId;
         $this->titulo = $titulo;

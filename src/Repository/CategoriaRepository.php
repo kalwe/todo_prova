@@ -16,10 +16,8 @@ class CategoriaRepository implements iCategoriaRepository
         $this->db = $db;
     }
 
-    // insere um obj no database
+    // insere uma categoria no database
     public function create(Categoria $categoria) {
-
-        
         $categoriaAdd = $this->db->prepare("
             INSERT INTO categoria (nome)
             VALUES (:nome)
