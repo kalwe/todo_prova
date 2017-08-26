@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
         // echo $categoria->nome;
     }
     $categoriaService->addCategoria($categoria);
+    header('Location: cadastroCategoria.php'); // redirecina para index page
 }
 
 ?>

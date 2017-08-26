@@ -1,14 +1,15 @@
 <?php
 
-// namespace Interfaces\Repositories
-// include(__DIR__. DIRECTORY_SEPARATOR. '..\..\Model\Categoria.php');
+namespace Interfaces\Repositories;
 
-// use Model\Categoria as Categoria;
+require_once(__DIR__. DIRECTORY_SEPARATOR. '..\..\Model\Categoria.php');
 
-public interface iCategoriaRepository
-{
-    public function create($categoria);
+use Model\Categoria as Categoria;
+
+interface iCategoriaRepository {
+    public function create(Categoria $categoria);
     public function listAll();
+    public function delete($categoriaId);
 }
 
 ?>

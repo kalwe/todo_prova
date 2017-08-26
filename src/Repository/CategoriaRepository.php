@@ -2,27 +2,19 @@
 
 namespace Repository;
 
-// require_once '../init.php';
-// include_once(__DIR__. DIRECTORY_SEPARATOR. '..\Data\DbConnection.php');
 require_once(__DIR__. DIRECTORY_SEPARATOR. '..\Model\Categoria.php');
-// include(__DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iCategoriaRepository.php');
+require_once(__DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iCategoriaRepository.php');
 
 use Model\Categoria as Categoria;
-// use Data\DbConnection as DbConnection;
-// use Interfaces\Repositories as iCategoriaRepository;
+use Interfaces\Repositories\iCategoriaRepository as iCategoriaRepository;
 
-// $dbCon = new DbConnection;
-// $db = $dbCon->getConnection();
-
-class CategoriaRepository
+class CategoriaRepository implements iCategoriaRepository
 {
     private $db;
 
     public function __construct($db) {
         $this->db = $db;
     }
-
-    // public $categoria;
 
     // insere um obj no database
     public function create(Categoria $categoria) {
@@ -48,6 +40,15 @@ class CategoriaRepository
         $categorias = $categoriasList->rowCount() ? $categoriasList : [];
 
         return $categorias;
+    }
+
+    // deleta uma cateogria
+    public function deletar($categoriaId) {
+        $categoriaDelete = $this->db->prepare("
+            DELETE 
+        ");
+
+        $categoriaDelete->execute();
     }
 }
 ?>

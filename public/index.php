@@ -46,20 +46,6 @@ $tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
 
 </head>
 <body>
-        <!-- nav header -->
-        <!-- <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-            <a class="navbar-brand" href="#">Gerenciador de Tarefas</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Tarefas <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
-                    </li>
-                </ul>
-            </div>
-        </nav> -->
 
         <!-- content -->
         <div class="conteudo">
@@ -75,7 +61,7 @@ $tarefas = $tarefasQuery->rowCount() ? $tarefasQuery : [];
                                     <a href="#tarefa"><?php echo $tarefa['titulo']; ?></a>
                                 </span>
                                 <?php if(!$tarefa['completa']): ?>
-                                    <a href="#completada" class="button-completa">Marcar como Completada</a>
+                                    <a href="#completada" class="button-completa">Marcar como Completa</a>
                                 <?php endif; ?>
                             </li>
                         <?php endforeach; ?>

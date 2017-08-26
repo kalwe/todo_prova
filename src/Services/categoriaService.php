@@ -2,13 +2,15 @@
 
 namespace Services;
 
-include(__DIR__. DIRECTORY_SEPARATOR.'../Repository/CategoriaRepository.php');
-require_once(__DIR__. DIRECTORY_SEPARATOR.'../Model/Categoria.php');
+include(__DIR__. DIRECTORY_SEPARATOR. '../Repository/CategoriaRepository.php');
+require_once(__DIR__. DIRECTORY_SEPARATOR. '../Interfaces/Services/iCategoryService.php');
+require_once(__DIR__. DIRECTORY_SEPARATOR. '../Model/Categoria.php');
 
 use Repository\CategoriaRepository as CategoriaRepository;
+use Interfaces\Services\iCategoriaService as iCategoriaService;
 use Model\Categoria as Categoria;
 
-class CategoriaService {
+class CategoriaService implements iCategoriaService {
 
     public $categoriaRepository;
     // public $categoria = Categoria;
@@ -19,7 +21,6 @@ class CategoriaService {
 
     public function addCategoria(Categoria $categoria) {
         $this->categoriaRepository->create($categoria);
-        header('Location: cadastroCategoria.php'); // redirecina para index page
     }
 
     public function listCategorias() {
