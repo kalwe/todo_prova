@@ -9,7 +9,7 @@ use Model\Tarefa as Tarefa;
 interface iTarefaService {
     public function addTarefa(Tarefa $tarefa);
     public function listTarefas();
-    public function marcarComoCompletada($id);
+    public function marcarComoCompletada(Tarefa $tarefa);
     public function modificarTarefa(Tarefa $tarefa);
 }
 

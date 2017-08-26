@@ -11,7 +11,8 @@ interface iTarefaRepository {
     public function find($id);
     public function list();
     public function update(Tarefa $tarefa);
-    public function trocarCompleta(Tarefa $tarefa);
+    public function atualizaCompleta(Tarefa $tarefa);
+    //public function atualizaCompleta($tarefaId, $completa);
     public function delete($id);
 }
 

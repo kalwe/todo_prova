@@ -15,6 +15,10 @@ class DbConnection {
     public function getConnection() {
         return new PDO('mysql:dbname=tarefas_db;host=localhost', 'root', '');
     }
+
+    // public function closeConnection() {
+
+    // }
 }
 
 ?>

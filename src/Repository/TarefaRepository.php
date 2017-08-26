@@ -2,9 +2,11 @@
 
 namespace Repository;
 
+require __DIR__. DIRECTORY_SEPARATOR. '../Data/DbConnection.php';
 require_once __DIR__. DIRECTORY_SEPARATOR. '..\Model\Tarefa.php';
 require_once __DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iTarefaRepository.php';
 
+use Data\DbConnection as DbConnection;
 use Model\Tarefa as Tarefa;
 use Interfaces\Repositories\iTarefaRepository as iTarefaRepository;
 
@@ -12,7 +14,7 @@ class TarefaRepository implements iTarefaRepository
 {
     private $_db;
 
-    public function __construct($db) {
+    public function __construct(DbConnection $db) {
         $this->_db = $db
     }
 
@@ -52,6 +54,7 @@ class TarefaRepository implements iTarefaRepository
         return $tarefa;
     }
 
+    // retorna uma lista com todas as tarefas do db
     public function list() {
         $tarefaList = $this->_db->prepare("
             SELECT tarefa_id, categoria_id, usuario_id, titulo, descricao, completa, dataInicio, dataFim
@@ -62,6 +65,7 @@ class TarefaRepository implements iTarefaRepository
         return tarefas;
     }
 
+    // atualiza uma tarefa no db
     public function update(Tarefa $tarefa) {
         $tarefaUpdate = $this->_db->prepare("
             UPDATE tarefa SET usuario_id = :usuario_id, categoria_id = :categoria_id, titulo = :titulo, descricao = :descricao, completa = :completa, dataInicio = :dataInicio, dataFim = :dataFim 
@@ -80,7 +84,8 @@ class TarefaRepository implements iTarefaRepository
         ]);
     }
 
-    public function trocarCompleta(Tarefa $tarefa) {
+    // atualiza o status da tarefa de acordo com o status passado TODO: trocar params apenas tarefa_id e status completa
+    public function atualizaCompleta(Tarefa $tarefa) {
         $tarefaCompleta = $this->_db->prepare("
             UPDATE tarefa SET completa = :completa
             WHERE tarefa_id = :tarefa_id
