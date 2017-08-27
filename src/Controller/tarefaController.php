@@ -28,16 +28,6 @@ if (isset($_POST['submit-tarefa'])) {
     header('Location: index.php');
 }
 
-// marca tarefa como completa
-// if (isset($_GET['tarefaId'])) {
-//     $tarefa->tarefaId = $_GET['tarefaId'];
-//     $tarefa->usuarioId = $_SESSION['usuario_id'];
-//     $tarefa->completa = 1;
-
-//     $tarefaService->marcarComoCompleta($tarefa);
-//     header('Location: index.php');
-// }
-
 // deleta tarefa finalizada
 if (isset($_GET['tarefaId'])) {
     $tarefa->usuarioId = $_SESSION['usuario_id'];

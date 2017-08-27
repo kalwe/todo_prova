@@ -47,7 +47,6 @@ require_once '../src/Controller/categoriaController.php';
                                     <a href="#tarefa"><?php echo $tarefa['titulo']; ?></a>
                                 </span>
                                 <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="<?php echo $tarefa['completa'] ? 'button-deletar' : 'button-completa' ?>"><?php echo $tarefa['completa'] ? 'Deletar' : 'Marcar como Completa' ?></a>
-
                             </li>
                         <?php endforeach; ?>
                     </ul>
