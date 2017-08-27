@@ -16,10 +16,6 @@ class Tarefa {
     public function __construct() {
     }
 
-    // public function inverterCompleta() {
-    //     $completa = 
-    // }
-
     // gets
 
     public function __get($property) {
