@@ -9,7 +9,7 @@ use Model\Categoria as Categoria;
 interface iCategoriaService {
     public function addCategoria(Categoria $categoria);
     public function listCategorias();
-    public function deletarCategoria($categoriaId);
+    public function deletarCategoria($id);
 }
 
 ?>

@@ -10,27 +10,27 @@ use Interfaces\Repositories\iCategoriaRepository as iCategoriaRepository;
 
 class CategoriaRepository implements iCategoriaRepository
 {
-    private $db;
+    private $_db;
 
     public function __construct($db) {
-        $this->db = $db;
+        $this->_db = $db;
     }
 
     // insere uma categoria no database
     public function create(Categoria $categoria) {
-        $categoriaAdd = $this->db->prepare("
+        $categoriaAdd = $this->_db->prepare("
             INSERT INTO categoria (nome)
             VALUES (:nome)
         ");
 
         $categoriaAdd->execute([
-            'nome' => $categoria->nome
+            'nome' => $categoria->_nome
         ]);
     }
 
     // lista todas as categorias do database
     public function listAll() {
-        $categoriasList = $this->db->prepare("
+        $categoriasList = $this->_db->prepare("
             SELECT categoria_id, nome
             FROM categoria
         ");
@@ -42,14 +42,14 @@ class CategoriaRepository implements iCategoriaRepository
     }
 
     // deleta uma cateogria
-    public function delete($categoriaId) {
-        $categoriaDelete = $this->db->prepare("
+    public function delete($id) {
+        $categoriaDelete = $this->_db->prepare("
             DELETE FROM categoria
             WHERE categoria_id = :categoriaId
         ");
 
         $categoriaDelete->execute([
-            'categoriaId' => $categoriaId
+            'categoriaId' => $id
         ]);
     }
 }

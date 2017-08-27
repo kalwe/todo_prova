@@ -9,7 +9,7 @@ use Model\Tarefa as Tarefa;
 class GerenciarTarefa {
 
     public function InverteStatusCompleta(Tarefa $tarefa) {
-        $tarefa->completa = !$tarefa->completa;
+        $tarefa->_completa = !$tarefa->_completa;
     }
 
 }

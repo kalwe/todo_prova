@@ -14,9 +14,9 @@ class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
         $completa = 0; // valor inicial para comparacao
 
         $tarefa = new Tarefa;
-        $tarefa->tarefaId = 1;
-        $tarefa->usuarioId = 1;
-        $tarefa->completa = $completa;
+        $tarefa->_tarefaId = 1;
+        $tarefa->_usuarioId = 1;
+        $tarefa->_completa = $completa;
 
         $gerenciarTarefa = new GerenciarTarefa;
 
@@ -24,7 +24,7 @@ class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
         $gerenciarTarefa->InverteStatusCompleta($tarefa); // receber uma tarefa e inverter o valor da variavel completa
 
         // Assert
-        $this->assertEquals(!$completa, $tarefa->completa); // espero receber um valor direferente do valor inicial da variavel $completa
+        $this->assertEquals(!$completa, $tarefa->_completa); // espero receber um valor direferente do valor inicial da variavel $completa
     }
 
 }

@@ -16,7 +16,7 @@ $categorias = $categoriaService->listCategorias(); // lista as categorias para p
 // grava no database quando o usuario submeter o formulario
 if (isset($_POST['submit-categoria'])) {
     if (isset($_POST['nome'])) {
-        $categoria->nome = trim($_POST['nome']);
+        $categoria->_nome = trim($_POST['nome']);
     }
     $categoriaService->addCategoria($categoria);
     header('Location: cadastroCategoria.php'); // redireciona para index page
@@ -24,8 +24,8 @@ if (isset($_POST['submit-categoria'])) {
 
 // deleta categoria por id
 if (isset($_GET['categoriaId'])) {
-    $categoriaId = $_GET['categoriaId'];
-    $categoriaService->deletarCategoria($categoriaId);
+    $id = $_GET['categoriaId'];
+    $categoriaService->deletarCategoria($id);
     header('Location: cadastroCategoria.php'); // redirecina para index page
 }
 

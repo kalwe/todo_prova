@@ -16,13 +16,13 @@ $tarefas = $tarefaService->listarTarefas();
 // adiciona tarefa no db
 if (isset($_POST['submit-tarefa'])) {
     if (isset($_POST['titulo']) ) {
-        $tarefa->usuarioId = $_SESSION['usuario_id'];
-        $tarefa->categoriaId = $_POST['categorias'];
-        $tarefa->titulo = trim($_POST['titulo']);
-        $tarefa->dataInicio = date('Y-m-d', strtotime($_POST['dataInicio']));
-        $tarefa->dataFim = date('Y-m-d', strtotime($_POST['dataFim']));
-        $tarefa->descricao = $_POST['descricao'];
-        $tarefa->completa = '0';
+        $tarefa->_usuarioId = $_SESSION['usuario_id'];
+        $tarefa->_categoriaId = $_POST['categorias'];
+        $tarefa->_titulo = trim($_POST['titulo']);
+        $tarefa->_dataInicio = date('Y-m-d', strtotime($_POST['dataInicio']));
+        $tarefa->_dataFim = date('Y-m-d', strtotime($_POST['dataFim']));
+        $tarefa->_descricao = $_POST['descricao'];
+        $tarefa->_completa = '0';
     }
     $tarefaService->addTarefa($tarefa);
     header('Location: index.php');
@@ -31,13 +31,13 @@ if (isset($_POST['submit-tarefa'])) {
 // se a tarefa estiver em aberta marca como completa
 // se ja estiver completa deleta do db
 if (isset($_GET['tarefaId'])) {
-    $tarefa->usuarioId = $_SESSION['usuario_id'];
-    $tarefa->tarefaId = $_GET['tarefaId'];
+    $tarefa->_usuarioId = $_SESSION['usuario_id'];
+    $tarefa->_tarefaId = $_GET['tarefaId'];
 
     $tarefaResult = $tarefaService->buscarTarefa($tarefa);
 
     if (!$tarefaResult['completa']) {
-        $tarefa->completa = 1;
+        $tarefa->_completa = 1;
         $tarefaService->marcarComoCompleta($tarefa);
         header('Location: index.php');
     }
