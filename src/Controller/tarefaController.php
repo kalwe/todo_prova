@@ -20,9 +20,9 @@ if (isset($_POST['submit-tarefa'])) {
         $tarefa->categoriaId = $_POST['categorias'];
         $tarefa->titulo = trim($_POST['titulo']);
         $tarefa->dataInicio = $_POST['dataInicio'];
-        $tarefa->datafim = $_POST['dataFim'];
+        $tarefa->dataFim = $_POST['dataFim'];
         $tarefa->descricao = $_POST['descricao'];
-        $tarefa->completa = 0;
+        $tarefa->completa = '0';
     }
     $tarefaService->addTarefa($tarefa);
     header('Location: index.php');
