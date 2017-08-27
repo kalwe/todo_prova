@@ -28,8 +28,7 @@ if (isset($_POST['submit-tarefa'])) {
         echo 'data fim: '.$tarefa->dataFim.'<br>';
     }
     $tarefaService->addTarefa($tarefa);
-    
-    // header('Location: index.php');
+    header('Location: index.php');
 }
 
 // marca tarefa como completa
