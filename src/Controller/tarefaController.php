@@ -19,15 +19,16 @@ if (isset($_POST['submit-tarefa'])) {
         $tarefa->usuarioId = $_SESSION['usuario_id'];
         $tarefa->categoriaId = $_POST['categorias'];
         $tarefa->titulo = trim($_POST['titulo']);
-        $tarefa->dataInicio = $_POST['dataInicio'];
-        $tarefa->dataFim = $_POST['dataFim'];
+        $tarefa->dataInicio = date('Y-m-d', strtotime($_POST['dataInicio']));
+        $tarefa->dataFim = date('Y-m-d', strtotime($_POST['dataFim']));
         $tarefa->descricao = $_POST['descricao'];
         $tarefa->completa = '0';
 
         echo 'data inicio: '.$tarefa->dataInicio.'<br>';
         echo 'data fim: '.$tarefa->dataFim.'<br>';
     }
-    // $tarefaService->addTarefa($tarefa);
+    $tarefaService->addTarefa($tarefa);
+    
     // header('Location: index.php');
 }
 
