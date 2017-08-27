@@ -69,7 +69,7 @@ ul a {
 
 /* Button Completa */
 .button-completa {
-    display: inline;
+    float: right;
     font-size: .8em;
     background-color: var(--grey-pumidice); 
     color: var(--grey-lynch-shadow);

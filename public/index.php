@@ -46,11 +46,15 @@ require_once '../src/Controller/categoriaController.php';
                                 <span class="item <?php echo $tarefa['completa'] ? ' completa' : '' ?> ">
                                     <a href="#tarefa"><?php echo $tarefa['titulo']; ?></a>
                                 </span>
-                                <?php if(!$tarefa['completa']): ?>
+
+                                <!-- <?php if(!$tarefa['completa']): ?>
                                     <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="button-completa">Marcar como Completa</a>
                                 <?php else: ?>
                                 <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="button-deletar">Deletar</a>
-                                <?php endif; ?>
+                                <?php endif; ?> -->
+
+                                <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="<?php echo $tarefa['completa'] ? 'button-deletar' : 'button-completa' ?>"><?php echo $tarefa['completa'] ? 'Deletar' : 'Marcar como Completa' ?></a>
+
                             </li>
                         <?php endforeach; ?>
                     </ul>
