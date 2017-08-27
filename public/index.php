@@ -48,6 +48,8 @@ require_once '../src/Controller/categoriaController.php';
                                 </span>
                                 <?php if(!$tarefa['completa']): ?>
                                     <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="button-completa">Marcar como Completa</a>
+                                <?php else: ?>
+                                <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="button-deletar">Deletar</a>
                                 <?php endif; ?>
                             </li>
                         <?php endforeach; ?>

@@ -36,8 +36,8 @@ class TarefaRepository implements iTarefaRepository {
         ]);
     }
 
-    // recupera uma tarefa por id da tarefa e usuario
-    public function find($usuarioId, $tarefaId) {
+    // recupera uma tarefa por id da tarefa e usuario : find
+    public function find(Tarefa $tarefa) {
         $tarefaFind = $this->db->prepare("
             SELECT usuario_id, tarefa_id, categoria.nome, titulo, dataInicio, dataFim, descricao, completa
             FROM tarefa
@@ -46,11 +46,11 @@ class TarefaRepository implements iTarefaRepository {
         ");
 
         $tarefaFind->execute([
-            'usuario_id' => $usuarioId,
-            'tarefa_id' => $tarefaId
+            'usuario_id' => $tarefa->usuarioId,
+            'tarefa_id' => $tarefa->tarefaId
         ]);
 
-        $tarefa = $tarefaFind->fetch();
+        $tarefa = $tarefaFind->fetch(0);
         return $tarefa;
     }
 
@@ -98,10 +98,11 @@ class TarefaRepository implements iTarefaRepository {
         ]);
     }
 
+    // delete
     public function delete($id) {
-        $tarefaDelete = $this->_db->prepare("
+        $tarefaDelete = $this->db->prepare("
             DELETE FROM tarefa
-            WHHERE usuario_id = :usuario_id AND tarefa_id = :tarefa_id
+            WHERE tarefa_id = :tarefa_id
         ");
 
         $tarefaDelete->execute([

@@ -31,7 +31,15 @@ class TarefaService implements iTarefaService {
     }
 
     public function modificarTarefa(Tarefa $tarefa) {
-        $this->tarefaRepository-atualizaTarefa($tarefa);
+        $this->tarefaRepository->atualizaTarefa($tarefa);
+    }
+
+    public function buscarTarefa(Tarefa $tarefa) {
+        return $this->tarefaRepository->find($tarefa);
+    }
+
+    public function deletarTarefa($id) {
+        $this->tarefaRepository->delete($id);
     }
 }
 

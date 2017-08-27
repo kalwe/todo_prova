@@ -84,6 +84,22 @@ ul a {
     background-color: var(--green-shamrock); 
 }
 
+.button-deletar {
+    float: right;
+    font-size: .8em;
+    background-color: #EC644B; /* SOFT-RED */
+    color: #363639;
+    padding: 5px 7px;
+    border: 0px;
+    opacity: 0.5;
+}
+
+.button-deletar:hover {
+    opacity: 1;
+    color: #fff;
+    background-color: #EF4836; /* FLAMINGO */
+}
+
 /* Form Adicionar Tarefas */
 .tarefa-adicionar {
     padding: 30px;

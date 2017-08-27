@@ -23,22 +23,37 @@ if (isset($_POST['submit-tarefa'])) {
         $tarefa->dataFim = date('Y-m-d', strtotime($_POST['dataFim']));
         $tarefa->descricao = $_POST['descricao'];
         $tarefa->completa = '0';
-
-        echo 'data inicio: '.$tarefa->dataInicio.'<br>';
-        echo 'data fim: '.$tarefa->dataFim.'<br>';
     }
     $tarefaService->addTarefa($tarefa);
     header('Location: index.php');
 }
 
 // marca tarefa como completa
-if (isset($_GET['tarefaId'])) {
-    $tarefa->tarefaId = $_GET['tarefaId'];
-    $tarefa->usuarioId = $_SESSION['usuario_id'];
-    $tarefa->completa = 1;
+// if (isset($_GET['tarefaId'])) {
+//     $tarefa->tarefaId = $_GET['tarefaId'];
+//     $tarefa->usuarioId = $_SESSION['usuario_id'];
+//     $tarefa->completa = 1;
 
-    $tarefaService->marcarComoCompleta($tarefa);
-    header('Location: index.php');
+//     $tarefaService->marcarComoCompleta($tarefa);
+//     header('Location: index.php');
+// }
+
+// deleta tarefa finalizada
+if (isset($_GET['tarefaId'])) {
+    $tarefa->usuarioId = $_SESSION['usuario_id'];
+    $tarefa->tarefaId = $_GET['tarefaId'];
+
+    $tarefaResult = $tarefaService->buscarTarefa($tarefa);
+
+    if (!$tarefaResult['completa']) {
+        $tarefa->completa = 1;
+        $tarefaService->marcarComoCompleta($tarefa);
+        header('Location: index.php');
+    }
+    else {
+        $tarefaService->deletarTarefa($tarefaResult['tarefa_id']);
+        header('Location: index.php');
+    }
 }
 
 ?>
