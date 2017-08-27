@@ -3,5 +3,5 @@
 # .vscode
 **/.vscode
 
-# excluindo paths temporariamente
-src/Domain/*
+composer.lock
+vendor/**
