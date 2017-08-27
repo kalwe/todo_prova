@@ -1,7 +1,14 @@
 # .gitignore
 #
-# .vscode
-**/.vscode
+
+#
+# dist/**
+# templates/**
+
+
+# vscode
+.vscode/**
+**/.vscode/**
 
 composer.lock
 vendor/**
