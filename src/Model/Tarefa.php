@@ -2,7 +2,11 @@
 
 namespace Model;
 
-class Tarefa  {
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'GerenciarTarefa.php';
+
+use Model\GerenciarTarefa as GerencairTarefa;
+
+class Tarefa extends GerenciarTarefa {
 
     private $_tarefaId;
     private $_usuarioId;

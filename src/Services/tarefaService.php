@@ -27,6 +27,7 @@ class TarefaService implements iTarefaService {
     }
 
     public function marcarComoCompleta(Tarefa $tarefa) {
+        $tarefa->InverteStatusCompleta($tarefa);
         $this->tarefaRepository->atualizaStatusCompleta($tarefa);
     }
 

@@ -34,10 +34,9 @@ if (isset($_GET['tarefaId'])) {
     $tarefa->_usuarioId = $_SESSION['usuario_id'];
     $tarefa->_tarefaId = $_GET['tarefaId'];
 
-    $tarefaResult = $tarefaService->buscarTarefa($tarefa);
+    $tarefaResult = $tarefaService->buscarTarefa($tarefa); // retorna uma tarefa para verificacoes
 
     if (!$tarefaResult['completa']) {
-        $tarefa->_completa = 1;
         $tarefaService->marcarComoCompleta($tarefa);
         header('Location: index.php');
     }
