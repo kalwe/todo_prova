@@ -1,16 +1,17 @@
 <?php
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../src/Model/Tarefa.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../src/Model/GenrenciarTarefa.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../src/Model/GerenciarTarefa.php';
 
 use Model\Tarefa as Tarefa;
-use Mode\GerenciarTarefa as GerenciarTarefa;
+use Model\GerenciarTarefa as GerenciarTarefa;
 
 class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
 
+    // Should - TODO:
     public function testInverterStatusCompleta() {
         // Arrange
-        $completa = 0;
+        $completa = 0; // valor inicial para comparacao
 
         $tarefa = new Tarefa;
         $tarefa->tarefaId = 1;
@@ -20,7 +21,7 @@ class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
         $gerenciarTarefa = new GerenciarTarefa;
 
         // Act
-        $gerenciarTarefa->InverterStatusCompleta($tarefa);
+        $gerenciarTarefa->InverterStatusCompleta($tarefa); // receber uma tarefa e inverter o valor da variavel completa
 
         // Assert
         $this->assertEquals(!$completa, $tarefa->completa);
