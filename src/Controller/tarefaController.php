@@ -9,7 +9,7 @@ use Model\Tarefa as Tarefa;
 
 $tarefaService = new TarefaService($db); // instance new service with database connection
 
-$tarefa = new Tarefa();
+$tarefa = new Tarefa;
 
 $tarefas = $tarefaService->listarTarefas();
 

@@ -7,7 +7,7 @@ require_once(__DIR__. DIRECTORY_SEPARATOR. '../Model/Categoria.php');
 use Model\Categoria as Categoria;
 use Services\CategoriaService as CategoriaService;
 
-$categoria = new Categoria();
+$categoria = new Categoria;
 
 $categoriaService = new CategoriaService($db);
 
