@@ -16,14 +16,8 @@ class Tarefa {
     public function __construct() {
     }
 
-    // public function __construct($usuarioId, $categoriaId, $dataInicio, $dataFim, $titulo, $descricao, $completa){
-    //     $this->categoriaId = $categoriaId;
-    //     $this->usuarioId = $usuarioId;
-    //     $this->titulo = $titulo;
-    //     $this->dataInicio = $dataInicio;
-    //     $this->dataFim = $dataFim;
-    //     $this->descricao = $descricao;
-    //     $this->completa = $completa;
+    // public function inverterCompleta() {
+    //     $completa = 
     // }
 
     // gets

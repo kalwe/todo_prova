@@ -26,8 +26,8 @@ class TarefaService implements iTarefaService {
         return $this->tarefaRepository->listAll();
     }
 
-    public function marcarComoCompletada(Tarefa $tarefa) {
-        $this->tarefaRepository->atualizaCompleta($tarefa);
+    public function marcarComoCompleta(Tarefa $tarefa) {
+        $this->tarefaRepository->atualizaStatusCompleta($tarefa);
     }
 
     public function modificarTarefa(Tarefa $tarefa) {

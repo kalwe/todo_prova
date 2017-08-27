@@ -1,6 +1,5 @@
 <?php
 
-// require_once 'app/init.php';
 require_once '../src/Controller/tarefaController.php';
 require_once '../src/Controller/categoriaController.php';
 
@@ -44,7 +43,7 @@ require_once '../src/Controller/categoriaController.php';
                                     <a href="#tarefa"><?php echo $tarefa['titulo']; ?></a>
                                 </span>
                                 <?php if(!$tarefa['completa']): ?>
-                                    <a href="#completada" class="button-completa">Marcar como Completa</a>
+                                    <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="button-completa">Marcar como Completa</a>
                                 <?php endif; ?>
                             </li>
                         <?php endforeach; ?>

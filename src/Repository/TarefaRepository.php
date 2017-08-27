@@ -73,34 +73,35 @@ class TarefaRepository implements iTarefaRepository {
         ");
 
         $tarefaUpdate->execute([
-            'usuario_id'   => $tarefa->usuario_id,
-            'categoria_id' => $tarefa->categoria_id,
+            'usuario_id'   => $tarefa->usuarioId,
+            'categoria_id' => $tarefa->categoriaId,
             'titulo'       => $tarefa->titulo,
             'completa'     => $tarefa->completa,
             'descricao'    => $tarefa->descricao,
             'dataInicio'   => $tarefa->dataInicio,
             'dataFim'      => $tarefa->dataFim,
-            'tarefa_id'    => $tarefa->tarefa_id
+            'tarefa_id'    => $tarefa->tarefaId
         ]);
     }
 
     // atualiza o status da tarefa de acordo com o status passado TODO: trocar params apenas tarefa_id e status completa
-    public function atualizaCompleta(Tarefa $tarefa) {
+    public function atualizaStatusCompleta(Tarefa $tarefa) {
         $tarefaCompleta = $this->db->prepare("
             UPDATE tarefa SET completa = :completa
-            WHERE tarefa_id = :tarefa_id
+            WHERE usuario_id = :usuario_id AND tarefa_id = :tarefa_id
         ");
 
         $tarefaCompleta->execute([
-            'completa'  => $tarefa->completa,
-            'tarefa_id' => $tarefa->tarefa_id
+            'usuario_id' => $tarefa->usuarioId,
+            'tarefa_id' => $tarefa->tarefaId,
+            'completa'  => $tarefa->completa
         ]);
     }
 
     public function delete($id) {
         $tarefaDelete = $this->_db->prepare("
             DELETE FROM tarefa
-            WHHERE tarefa_id = :tarefa_id
+            WHHERE usuario_id = :usuario_id AND tarefa_id = :tarefa_id
         ");
 
         $tarefaDelete->execute([
