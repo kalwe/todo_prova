@@ -20,15 +20,19 @@ require_once '../src/Controller/categoriaController.php';
     <link rel="stylesheet" href="css/main.css">
 
     <!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="lib/tether/dist/css/tether.min.css">
+    <link rel="stylesheet" href="lib/tether/dist/css/tether.min.css"> -->
 
-    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/inputmask/dist/min/inputmask/inputmask.min.js"></script>
+    <script src="lib/inputmask/dist/jquery.inputmask.bundle.js"></script>
+    <script src="lib/inputmask/dist/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="js/inputmask.js"></script>
+
+    <!-- <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/tether/dist/js/tether.min.js"></script> -->
 
 </head>
 <body>
-
         <!-- content -->
         <div class="conteudo">
 
@@ -60,9 +64,9 @@ require_once '../src/Controller/categoriaController.php';
                 <form method="post">
                     <input type="text" name="titulo" class="input" autocomplete="off" maxlength="40" placeholder="Título"><br />
 
-                    <input type='text' name="dataInicio" class="input" placeholder="Data de Início" maxlength="11" onkeypress=""><br />
+                    <input id="dataInicio" type='text' name="dataInicio" class="input" placeholder="Data de Início" maxlength="11" onkeypress=""><br />
 
-                    <input type="text" name="dataFim" class="input" placeholder="Data Fim" maxlength="11" onkeypress=""><br />
+                    <input id="dataFim" type="text" name="dataFim" class="input" placeholder="Data Fim" maxlength="11" onkeypress=""><br />
 
                     <select name="categorias" class="input select-categorias">
                         <option value="0" > -- Selecione uma Categoria -- </option>
