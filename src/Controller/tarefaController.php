@@ -32,20 +32,10 @@ if (isset($_POST['submit-tarefa'])) {
 if (isset($_GET['tarefaId'])) {
     $tarefa->tarefaId = $_GET['tarefaId'];
     $tarefa->usuarioId = $_SESSION['usuario_id'];
-
-    // $tarefaResult = $tarefaService->find($tarefa->tarefaId);
-    // echo $tarefaResult->titulo.'<br>';
-    // echo $tarefaResult->completa.'<br>';
-
-    // $tarefa->inverteStatusCompleta($tarefaResult->completa);
-
     $tarefa->completa = 1;
-    echo 'TarefaId: '.$tarefa->tarefaId.'<br>';
-    echo 'Usuario Id: '.$tarefa->usuarioId.'<br>';
-    echo 'Completa: '.$tarefa->completa.'<br>';
 
     $tarefaService->marcarComoCompleta($tarefa);
-    // header('Location: index.php');
+    header('Location: index.php');
 }
 
 ?>
