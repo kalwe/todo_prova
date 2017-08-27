@@ -21,10 +21,10 @@ class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
         $gerenciarTarefa = new GerenciarTarefa;
 
         // Act
-        $gerenciarTarefa->InverterStatusCompleta($tarefa); // receber uma tarefa e inverter o valor da variavel completa
+        $gerenciarTarefa->InverteStatusCompleta($tarefa); // receber uma tarefa e inverter o valor da variavel completa
 
         // Assert
-        $this->assertEquals(!$completa, $tarefa->completa);
+        $this->assertEquals(!$completa, $tarefa->completa); // espero receber um valor direferente do valor inicial da variavel $completa
     }
 
 }

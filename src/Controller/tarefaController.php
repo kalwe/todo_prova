@@ -28,7 +28,8 @@ if (isset($_POST['submit-tarefa'])) {
     header('Location: index.php');
 }
 
-// deleta tarefa finalizada
+// se a tarefa estiver em aberta marca como completa
+// se ja estiver completa deleta do db
 if (isset($_GET['tarefaId'])) {
     $tarefa->usuarioId = $_SESSION['usuario_id'];
     $tarefa->tarefaId = $_GET['tarefaId'];
