@@ -7,6 +7,10 @@ require_once __DIR__. DIRECTORY_SEPARATOR. '../Model/Tarefa.php';
 use Services\TarefaService as TarefaService;
 use Model\Tarefa as Tarefa;
 
+function invertData($data, $separador = '/', $juntar = '/') {
+    return implode($juntar, array_reverse(explode($separador, $data)));
+}
+
 $tarefaService = new TarefaService($db); // instance new service with database connection
 
 $tarefa = new Tarefa;
@@ -19,8 +23,17 @@ if (isset($_POST['submit-tarefa'])) {
         $tarefa->_usuarioId = $_SESSION['usuarioId'];
         $tarefa->_categoriaId = $_POST['categorias'];
         $tarefa->_titulo = trim($_POST['titulo']);
-        $tarefa->_dataInicio = date('Y-m-d', strtotime($_POST['dataInicio']));
-        $tarefa->_dataFim = date('Y-m-d', strtotime($_POST['dataFim']));
+        $tarefa->_dataInicio = date('Y-m-d', strtotime(invertData($_POST['dataInicio'])));
+        $tarefa->_dataFim = date('Y-m-d', strtotime(invertData($_POST['dataFim'])));
+
+        // echo 'Data Inicio: '.$_POST['dataInicio'].'<br>';
+        // echo 'Data Fim: '.$_POST['dataFim'].'<br>';
+
+        // echo '<br>';
+
+        // echo 'Data Invertida Inicio '.invertData($_POST['dataInicio']).'<br>';
+        // echo 'Data Invertida Fim '.invertData($_POST['dataFim']).'<br>';
+
         $tarefa->_descricao = $_POST['descricao'];
         $tarefa->_completa = '0';
     }
