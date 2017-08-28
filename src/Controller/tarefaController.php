@@ -16,7 +16,7 @@ $tarefas = $tarefaService->listarTarefas();
 // adiciona tarefa no db
 if (isset($_POST['submit-tarefa'])) {
     if (isset($_POST['titulo']) ) {
-        $tarefa->_usuarioId = $_SESSION['usuario_id'];
+        $tarefa->_usuarioId = $_SESSION['usuarioId'];
         $tarefa->_categoriaId = $_POST['categorias'];
         $tarefa->_titulo = trim($_POST['titulo']);
         $tarefa->_dataInicio = date('Y-m-d', strtotime($_POST['dataInicio']));
@@ -31,8 +31,8 @@ if (isset($_POST['submit-tarefa'])) {
 // se a tarefa estiver em aberta marca como completa
 // se ja estiver completa deleta do db
 if (isset($_GET['tarefaId'])) {
-    $tarefa->_usuarioId = $_SESSION['usuario_id'];
-    $tarefa->_tarefaId = $_GET['tarefaId'];
+    $tarefa->_usuarioId = $_SESSION['usuarioId'];
+    $tarefa->_id = $_GET['tarefaId'];
 
     $tarefaResult = $tarefaService->buscarTarefa($tarefa); // retorna uma tarefa para verificacoes
 
@@ -41,7 +41,7 @@ if (isset($_GET['tarefaId'])) {
         header('Location: index.php');
     }
     else {
-        $tarefaService->deletarTarefa($tarefaResult['tarefa_id']);
+        $tarefaService->deletarTarefa($tarefaResult['id']);
         header('Location: index.php');
     }
 }

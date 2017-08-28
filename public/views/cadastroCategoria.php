@@ -20,7 +20,7 @@ require_once '../../src/Controller/categoriaController.php';
                 <?php foreach($categorias as $categoria): ?>
                     <li>
                         <span class="item"><?php echo $categoria['nome'] ?></span>
-                        <?php echo '<a href="?categoriaId='.$categoria['categoria_id'].'" class="btnDeletar">Deletar</a>' ?>
+                        <?php echo '<a href="?categoriaId='.$categoria['id'].'" class="btnDeletar">Deletar</a>' ?>
                     </li>
                 <?php endforeach; ?>
             </ul>

@@ -1,8 +1,8 @@
 <?php
 
-include_once(__DIR__. DIRECTORY_SEPARATOR. '../../public/app/init.php');
-include(__DIR__. DIRECTORY_SEPARATOR. '../Services/categoriaService.php');
-require_once(__DIR__. DIRECTORY_SEPARATOR. '../Model/Categoria.php');
+include_once __DIR__. DIRECTORY_SEPARATOR. '../../public/app/init.php';
+include __DIR__. DIRECTORY_SEPARATOR. '../Services/categoriaService.php';
+require_once __DIR__. DIRECTORY_SEPARATOR. '../Model/Categoria.php';
 
 use Model\Categoria as Categoria;
 use Services\CategoriaService as CategoriaService;

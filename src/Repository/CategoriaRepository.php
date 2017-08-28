@@ -2,8 +2,8 @@
 
 namespace Repository;
 
-require_once(__DIR__. DIRECTORY_SEPARATOR. '..\Model\Categoria.php');
-require_once(__DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iCategoriaRepository.php');
+require_once __DIR__. DIRECTORY_SEPARATOR. '..\Model\Categoria.php';
+require_once __DIR__. DIRECTORY_SEPARATOR. '..\Interfaces\Repositories\iCategoriaRepository.php';
 
 use Model\Categoria as Categoria;
 use Interfaces\Repositories\iCategoriaRepository as iCategoriaRepository;
@@ -31,7 +31,7 @@ class CategoriaRepository implements iCategoriaRepository
     // lista todas as categorias do database
     public function listAll() {
         $categoriasList = $this->_db->prepare("
-            SELECT categoria_id, nome
+            SELECT id, nome
             FROM categoria
         ");
 
@@ -45,11 +45,11 @@ class CategoriaRepository implements iCategoriaRepository
     public function delete($id) {
         $categoriaDelete = $this->_db->prepare("
             DELETE FROM categoria
-            WHERE categoria_id = :categoriaId
+            WHERE id = :id
         ");
 
         $categoriaDelete->execute([
-            'categoriaId' => $id
+            'id' => $id
         ]);
     }
 }

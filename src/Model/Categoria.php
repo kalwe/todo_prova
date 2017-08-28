@@ -4,7 +4,7 @@ namespace Model;
 
 class Categoria {
 
-    private $_categoriaId;
+    private $_id;
     private $_nome; 
 
     // gets

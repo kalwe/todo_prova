@@ -46,7 +46,7 @@ require_once '../src/Controller/categoriaController.php';
                                 <span class="item <?php echo $tarefa['completa'] ? ' completa' : '' ?> ">
                                     <a href="#tarefa"><?php echo $tarefa['titulo']; ?></a>
                                 </span>
-                                <a href="?tarefaId=<?php echo $tarefa['tarefa_id'] ?>" class="<?php echo $tarefa['completa'] ? 'button-deletar' : 'button-completa' ?>"><?php echo $tarefa['completa'] ? 'Deletar' : 'Marcar como Completa' ?></a>
+                                <a href="?tarefaId=<?php echo $tarefa['id'] ?>" class="<?php echo $tarefa['completa'] ? 'button-deletar' : 'button-completa' ?>"><?php echo $tarefa['completa'] ? 'Deletar' : 'Marcar como Completa' ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -62,15 +62,15 @@ require_once '../src/Controller/categoriaController.php';
                 <form method="post">
                     <input type="text" name="titulo" class="input" autocomplete="off" maxlength="40" placeholder="Título"><br />
 
-                    <input id="dataInicio" type='text' name="dataInicio" class="input" placeholder="Data de Início" maxlength="11" onkeypress=""><br />
+                    <input id="dataInicio" type='text' name="dataInicio" class="input" placeholder="Data de Início" maxlength="11"><br />
 
-                    <input id="dataFim" type="text" name="dataFim" class="input" placeholder="Data Fim" maxlength="11" onkeypress=""><br />
+                    <input id="dataFim" type="text" name="dataFim" class="input" placeholder="Data Fim" maxlength="11"><br />
 
                     <select name="categorias" class="input select-categorias">
                         <option value="0" > -- Selecione uma Categoria -- </option>
                         <?php
                             foreach ($categoriaService->listCategorias() as $categoria) {
-                                echo '<option value="'.$categoria['categoria_id'].'">'.$categoria['nome'].'</option>';
+                                echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
                             };
                         ?>
                     </select>

@@ -8,7 +8,7 @@ use Model\GerenciarTarefa as GerencairTarefa;
 
 class Tarefa extends GerenciarTarefa {
 
-    private $_tarefaId;
+    private $_id;
     private $_usuarioId;
     private $_categoriaId;
     private $_titulo;

@@ -14,7 +14,7 @@ class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
         $completa = 0; // valor inicial para comparacao
 
         $tarefa = new Tarefa;
-        $tarefa->_tarefaId = 1;
+        $tarefa->_id = 1;
         $tarefa->_usuarioId = 1;
         $tarefa->_completa = $completa;
 

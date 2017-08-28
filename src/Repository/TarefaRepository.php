@@ -21,13 +21,13 @@ class TarefaRepository implements iTarefaRepository {
     // insere uma tarefa no db
     public function create(Tarefa $tarefa) {
         $tarefaInsert = $this->_db->prepare("
-            INSERT INTO tarefa (categoria_id, usuario_id, titulo, descricao, completa, dataInicio, dataFim)
-            VALUES (:categoria_id, :usuario_id, :titulo, :descricao, :completa, :dataInicio, :dataFim)
+            INSERT INTO tarefa (categoriaId, usuarioId, titulo, descricao, completa, dataInicio, dataFim)
+            VALUES (:categoriaId, :usuarioId, :titulo, :descricao, :completa, :dataInicio, :dataFim)
         ");
 
         $tarefaInsert->execute([
-            'categoria_id' => $tarefa->_categoriaId,
-            'usuario_id'   => $tarefa->_usuarioId,
+            'categoriaId' => $tarefa->_categoriaId,
+            'usuarioId'   => $tarefa->_usuarioId,
             'titulo'       => $tarefa->_titulo,
             'descricao'    => $tarefa->_descricao,
             'completa'     => $tarefa->_completa,
@@ -39,15 +39,15 @@ class TarefaRepository implements iTarefaRepository {
     // recupera uma tarefa por id da tarefa e usuario : find
     public function find(Tarefa $tarefa) {
         $tarefaFind = $this->_db->prepare("
-            SELECT usuario_id, tarefa_id, categoria.nome, titulo, dataInicio, dataFim, descricao, completa
+            SELECT tarefa.id, usuarioId, categoria.nome, titulo, dataInicio, dataFim, descricao, completa
             FROM tarefa
-            INNER JOIN categoria ON tarefa.categoria_id = categoria.categoria_id
-            WHERE tarefa_id = :tarefa_id AND usuario_id = :usuario_id
+            INNER JOIN categoria ON tarefa.categoriaId = categoria.id
+            WHERE tarefa.id = :id AND usuarioId = :usuarioId
         ");
 
         $tarefaFind->execute([
-            'usuario_id' => $tarefa->_usuarioId,
-            'tarefa_id' => $tarefa->_tarefaId
+            'usuarioId' => $tarefa->_usuarioId,
+            'id' => $tarefa->_id
         ]);
 
         $tarefa = $tarefaFind->fetch(0);
@@ -57,7 +57,7 @@ class TarefaRepository implements iTarefaRepository {
     // retorna uma lista com todas as tarefas do db
     public function listAll() {
         $tarefaList = $this->_db->prepare("
-            SELECT tarefa_id, categoria_id, usuario_id, titulo, descricao, completa, dataInicio, dataFim
+            SELECT id, categoriaId, usuarioId, titulo, descricao, completa, dataInicio, dataFim
             FROM tarefa
         ");
 
@@ -70,19 +70,19 @@ class TarefaRepository implements iTarefaRepository {
     // atualiza uma tarefa no db
     public function update(Tarefa $tarefa) {
         $tarefaUpdate = $this->_db->prepare("
-            UPDATE tarefa SET usuario_id = :usuario_id, categoria_id = :categoria_id, titulo = :titulo, descricao = :descricao, completa = :completa, dataInicio = :dataInicio, dataFim = :dataFim 
-            WHERE :tarefa_id
+            UPDATE tarefa SET usuarioId = :usuarioId, categoriaId = :categoriaId, titulo = :titulo, descricao = :descricao, completa = :completa, dataInicio = :dataInicio, dataFim = :dataFim 
+            WHERE :id
         ");
 
         $tarefaUpdate->execute([
-            'usuario_id'   => $tarefa->_usuarioId,
-            'categoria_id' => $tarefa->_categoriaId,
+            'usuarioId'    => $tarefa->_usuarioId,
+            'categoriaId'  => $tarefa->_categoriaId,
             'titulo'       => $tarefa->_titulo,
             'completa'     => $tarefa->_completa,
             'descricao'    => $tarefa->_descricao,
             'dataInicio'   => $tarefa->_dataInicio,
             'dataFim'      => $tarefa->_dataFim,
-            'tarefa_id'    => $tarefa->_tarefaId
+            'id'           => $tarefa->_id
         ]);
     }
 
@@ -90,12 +90,12 @@ class TarefaRepository implements iTarefaRepository {
     public function atualizaStatusCompleta(Tarefa $tarefa) {
         $tarefaCompleta = $this->_db->prepare("
             UPDATE tarefa SET completa = :completa
-            WHERE usuario_id = :usuario_id AND tarefa_id = :tarefa_id
+            WHERE usuarioId = :usuarioId AND id = :id
         ");
 
         $tarefaCompleta->execute([
-            'usuario_id' => $tarefa->_usuarioId,
-            'tarefa_id' => $tarefa->_tarefaId,
+            'usuarioId' => $tarefa->_usuarioId,
+            'id' => $tarefa->_id,
             'completa'  => $tarefa->_completa
         ]);
     }
@@ -104,11 +104,11 @@ class TarefaRepository implements iTarefaRepository {
     public function delete($id) {
         $tarefaDelete = $this->_db->prepare("
             DELETE FROM tarefa
-            WHERE tarefa_id = :tarefa_id
+            WHERE id = :id
         ");
 
         $tarefaDelete->execute([
-            'tarefa_id' => $id
+            'id' => $id
         ]);
     }
 }
