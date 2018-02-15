@@ -8,7 +8,6 @@ use Model\Categoria as Categoria;
 use Services\CategoriaService as CategoriaService;
 
 $categoria = new Categoria;
-
 $categoriaService = new CategoriaService($db);
 
 $categorias = $categoriaService->listCategorias(); // lista as categorias para preencher a lista

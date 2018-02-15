@@ -11,7 +11,7 @@ class DbConnection {
     private $db_passwd = '';
     private $db_name = 'tarefas_db';
 
-    // return new connection 
+    // return new connection
     public function getConnection() {
         return new PDO('mysql:dbname=tarefas_db;host=localhost', 'root', '');
     }

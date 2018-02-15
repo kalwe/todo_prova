@@ -8,7 +8,7 @@ use Model\GerenciarTarefa as GerenciarTarefa;
 
 class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
 
-    // Should - TODO:
+    // Shoud - TODO:
     public function testInverterStatusCompleta() {
         // Arrange
         $completa = 0; // valor inicial para comparacao
@@ -21,7 +21,7 @@ class GerenciarTarefaTest extends PHPUnit_Framework_TestCase {
         $gerenciarTarefa = new GerenciarTarefa;
 
         // Act
-        $gerenciarTarefa->InverteStatusCompleta($tarefa); // receber uma tarefa e inverter o valor da variavel completa
+        $gerenciarTarefa->InverteStatusTarefa($tarefa); // receber uma tarefa e inverter o valor da variavel completa
 
         // Assert
         $this->assertEquals(!$completa, $tarefa->_completa); // espero receber um valor direferente do valor inicial da variavel $completa
